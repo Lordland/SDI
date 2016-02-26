@@ -29,11 +29,14 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 				throws IOException, ServletException {
 		
-		String opcion, resultado, jspSiguiente;
+		String opcion, resultado, jspSiguiente, jspAnterior;
 		Accion accion;
 		String rolAntes, rolDespues;
 		
 		try {
+			
+			jspAnterior = req.getServletPath().replace("/","");
+			
 			opcion=req.getServletPath().replace("/","");
 				
 			rolAntes=obtenerRolDeSesion(req);
@@ -47,6 +50,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 			jspSiguiente=buscarJSPSegun(rolDespues, opcion, resultado);
 
 			req.setAttribute("jspSiguiente", jspSiguiente);
+			
 
 		} catch(Exception e) {
 			
@@ -54,7 +58,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 			
 			Log.error("Se ha producido alguna excepción no manejada [%s]",e);
 			
-			jspSiguiente="/login.jsp";
+			jspSiguiente="/error.jsp";
 		}
 			
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jspSiguiente); 
