@@ -12,7 +12,7 @@ public class PersistentCounter implements ServletContextListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
-
+ 
 		// Guardar el contador total de sesiones de usuario iniciadas
 		String counter=(String)arg0.getServletContext().getAttribute("contador");
 		Properties properties = new Properties();
