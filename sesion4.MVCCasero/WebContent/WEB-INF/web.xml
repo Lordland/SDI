@@ -21,6 +21,7 @@
   <servlet>
     <servlet-name>Controlador</servlet-name>
     <servlet-class>uo.sdi.servlets.Controlador</servlet-class>
+    <load-on-startup>0</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>Controlador</servlet-name>
