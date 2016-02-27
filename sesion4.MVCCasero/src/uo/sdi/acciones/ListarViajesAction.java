@@ -56,7 +56,7 @@ public class ListarViajesAction implements Accion {
 					if(t.getArrivalDate().equals(date)){
 						v.add(t);
 					}
-				}
+				} 
 				//viaje = PersistenceFactory.newTripDao().findByArrivalDate(date);
 				request.setAttribute("listaViajes", v);
 				Log.debug("Obtenida lista de viajes conteniendo [%d] viajes",
