@@ -29,5 +29,6 @@
 	</table>
 	<br/>	
 	Es Vd el usuario número: ${contador}
+	<a id="listarViajes" href="listarViajes">Lista de viajes</a>
 </body>
 </html>

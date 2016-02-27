@@ -164,5 +164,26 @@ public class TripDaoJdbcImpl implements TripDao {
 				new TripMapper(),
 				id, arrivalDate);
 	}
+	
+	public Trip findByArrivalDate(Date arrivalDate) {
+		return jdbcTemplate.queryForObject(
+				"TRIP_FIND_BY_ARRIVAL", 
+				new TripMapper(),
+				 arrivalDate);
+	}
+	
+	public Trip findByDepartureDate(Date departureDate) {
+		return jdbcTemplate.queryForObject(
+				"TRIP_FIND_BY_DEPARTURE", 
+				new TripMapper(),
+				departureDate);
+	}
+	
+	public Trip findByDestination(AddressPoint arrivalDate) {
+		return jdbcTemplate.queryForObject(
+				"TRIP_FIND_BY_DESTINATION", 
+				new TripMapper(),
+				 arrivalDate);
+	}
 
 }
