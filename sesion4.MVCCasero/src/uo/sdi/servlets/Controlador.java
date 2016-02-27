@@ -1,7 +1,9 @@
 package uo.sdi.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import alb.util.log.Log;
-
 import uo.sdi.acciones.*;
 
 public class Controlador extends javax.servlet.http.HttpServlet {
@@ -29,13 +30,12 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 				throws IOException, ServletException {
 		
-		String opcion, resultado, jspSiguiente, jspAnterior;
+		String opcion, resultado, jspSiguiente;
+		List<String> parametros = new ArrayList<String>();
 		Accion accion;
 		String rolAntes, rolDespues;
 		
 		try {
-			
-			jspAnterior = req.getServletPath().replace("/","");
 			
 			opcion=req.getServletPath().replace("/","");
 				
@@ -64,7 +64,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(jspSiguiente); 
 			
 		dispatcher.forward(req, res);			
-	}			
+	}		
 	
 	
 	private String obtenerRolDeSesion(HttpServletRequest req) {
@@ -103,6 +103,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		Map<String,Accion> mapaPublico=new HashMap<String,Accion>();
 		mapaPublico.put("validarse", new ValidarseAction());
 		mapaPublico.put("listarViajes", new ListarViajesAction());
+		mapaPublico.put("cargar", new ListarViajesAction());
 		mapaDeAcciones.put("PUBLICO", mapaPublico);
 		
 		Map<String,Accion> mapaRegistrado=new HashMap<String,Accion>();
@@ -125,6 +126,9 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/listaViajes.jsp");
 		opcionResJSP.put("listarViajes", resJSP);
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/login.jsp");
+		opcionResJSP.put("cargar", resJSP);
 		
 		mapaDeNavegacion.put("PUBLICO",opcionResJSP);
 		
