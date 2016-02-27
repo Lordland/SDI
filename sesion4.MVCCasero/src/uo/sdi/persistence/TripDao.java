@@ -12,7 +12,7 @@ public interface TripDao extends GenericDao<Trip, Long> {
 	
 	Trip findByDepartureDate(Date arrivalDate);
 	
-	Trip findByDestination(AddressPoint destination);
+	Trip findByDestination(AddressPoint a);
 
 	Trip findByPromoterIdAndArrivalDate(Long id, Date arrivalDate);
 
