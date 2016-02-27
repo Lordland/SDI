@@ -22,7 +22,7 @@
 			<td id="email"><form action="modificarDatos" method="POST">
 					<input type="text" name="email" size="15"
 						value="<jsp:getProperty property="email" name="user"/>"> 
-					<input type="submit" value="Modificar">
+					<input type="submit">
 				</form>
 			</td>
 		</tr>
