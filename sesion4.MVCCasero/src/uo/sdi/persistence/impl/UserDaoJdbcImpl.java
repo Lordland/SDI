@@ -1,5 +1,6 @@
 package uo.sdi.persistence.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -34,15 +35,20 @@ public class UserDaoJdbcImpl implements UserDao {
 	private	JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
 	@Override
-	public Long save(User dto) {
-		jdbcTemplate.execute("USER_INSERT", 
-				dto.getLogin(), 
-				dto.getPassword(), 
-				dto.getName(),
-				dto.getSurname(),
-				dto.getEmail(),
-				dto.getStatus().ordinal()  // enum saved as integer
-			);
+	public Long save(User dto){
+		try {
+			jdbcTemplate.execute("USER_INSERT", 
+					new String(dto.getLogin().getBytes(), "UTF-8"), 
+					new String(dto.getPassword().getBytes(), "UTF-8"),
+					new String(dto.getName().getBytes(), "UTF-8"),
+					new String(dto.getSurname().getBytes(), "UTF-8"),
+					new String(dto.getEmail().getBytes(), "UTF-8"),
+					dto.getStatus().ordinal()  // enum saved as integer
+				);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return jdbcTemplate.getGeneratedKey();
 	}
 

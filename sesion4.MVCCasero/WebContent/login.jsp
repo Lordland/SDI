@@ -8,12 +8,20 @@
  	<center><h1>Inicie sesión</h1></center>
  	<hr><br>
  	<table align="center">
-    	<tr> 
+    	<tr>   
     		<td align="right">Su identificador de usuario</td>
 	    	<td><input type="text" name="nombreUsuario" align="left" size="15"></td>
       	</tr>
       	<tr>
     	    <td><input type="submit" value="Enviar"/></td>
+      	</tr>
+      </table>
+   </form>
+   <form action="registrarse" method="post">
+
+ 	<table align="center">
+      	<tr>
+    	    <td><input type="submit" value="Registrarse"/></td>
       	</tr>
       </table>
    </form>
