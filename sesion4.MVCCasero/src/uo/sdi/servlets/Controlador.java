@@ -1,9 +1,7 @@
 package uo.sdi.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -31,7 +29,6 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 				throws IOException, ServletException {
 		
 		String opcion, resultado, jspSiguiente;
-		List<String> parametros = new ArrayList<String>();
 		Accion accion;
 		String rolAntes, rolDespues;
 		
@@ -104,6 +101,8 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		mapaPublico.put("validarse", new ValidarseAction());
 		mapaPublico.put("listarViajes", new ListarViajesAction());
 		mapaPublico.put("cargar", new ListarViajesAction());
+		mapaPublico.put("crearUsuario", new CrearUsuarioAccion());
+		mapaPublico.put("registrarse", new ExitoAccion());
 		mapaDeAcciones.put("PUBLICO", mapaPublico);
 		
 		Map<String,Accion> mapaRegistrado=new HashMap<String,Accion>();
@@ -129,6 +128,12 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/login.jsp");
 		opcionResJSP.put("cargar", resJSP);
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/login.jsp");
+		opcionResJSP.put("crearUsuario", resJSP);
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/registro.jsp");
+		opcionResJSP.put("registrarse", resJSP);
 		
 		mapaDeNavegacion.put("PUBLICO",opcionResJSP);
 		
