@@ -17,11 +17,12 @@ public class ValidarseAction implements Accion {
 		
 		String resultado="EXITO";
 		String nombreUsuario=request.getParameter("nombreUsuario");
+		String password=request.getParameter("password");
 		HttpSession session=request.getSession();
 		if (session.getAttribute("user")==null) {
 			UserDao dao = PersistenceFactory.newUserDao();
 			User userByLogin = dao.findByLogin(nombreUsuario);
-			if (userByLogin!=null) {
+			if (userByLogin!=null && userByLogin.getPassword().equals(password)) {
 				session.setAttribute("user", userByLogin);
 				int contador=Integer.parseInt((String)request.getServletContext().getAttribute("contador"));
 				request.getServletContext().setAttribute("contador", String.valueOf(contador+1));
