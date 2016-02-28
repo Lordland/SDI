@@ -13,12 +13,6 @@
 			<td>Usuario: ${user.login }</td>
 		</tr>
 		<tr>
-			<td> Nuevo usuario</td>
-			<td id=login>
-				<input type="text" name="login" size="15"/>
-			</td>
-		</tr>
-		<tr>
 			<td>Nombre: ${user.name }</td>
 		</tr>
 		<tr>
@@ -45,10 +39,6 @@
 				<input type="text" name="email" size="15"/>
 			</td>
 		</tr>
-		<tr>
-			<td>Password: ${user.password}</td>
-		</tr>
-		
 		<tr>
 			<td>Nueva password: </td>
 			<td id=login>

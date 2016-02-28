@@ -14,7 +14,6 @@ public class ModificarDatosAction implements Accion {
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {
-		String nLogin=request.getParameter("login");
 		String nName=request.getParameter("name");
 		String nSurname=request.getParameter("surname");
 		String nEmail=request.getParameter("email");
@@ -22,9 +21,6 @@ public class ModificarDatosAction implements Accion {
 		String pass2=request.getParameter("password2");
 		HttpSession session=request.getSession();
 		User usuario=((User)session.getAttribute("user"));
-		if(!nLogin.isEmpty() || !nLogin.contains(" ")){
-			usuario.setLogin(nLogin);
-		}
 		if(!nName.isEmpty() && !nName.contains(" ")){
 			usuario.setName(nName);
 		}
@@ -35,7 +31,7 @@ public class ModificarDatosAction implements Accion {
 			usuario.setEmail(nEmail);
 		}
 		try {
-			if(!nPassword.isEmpty() && !nLogin.contains(" ") && nPassword.equals(pass2)){
+			if(!nPassword.isEmpty() && !nPassword.contains(" ") && nPassword.equals(pass2)){
 				usuario.setPassword(nPassword);
 			}else{
 				return "FRACASO";

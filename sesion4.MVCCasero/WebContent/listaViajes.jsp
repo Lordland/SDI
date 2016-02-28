@@ -4,14 +4,14 @@
 <h2>Buscar por</h2>
 <form method="GET" action="cargar">
 	<select name="filtro">
+		<option value="todo">Mostrar todos los viajes</option>
 		<option value="fsalida">Fecha de salida</option>
 		<option value="fllegada">Fecha de llegada</option>
 		<option value="destino">Destino</option>
-		<option value="todo">Mostrar todos los viajes</option>
-	</select> <input type="text" name="filtroBuscar" size="15">
-	<input type="submit">
+	</select> <input type="text" name="filtroBuscar" size="15"> <input
+		type="submit">
 </form>
-<table border="1" >
+<table border="1">
 	<tr>
 		<th>ID viaje</th>
 		<th>Origen</th>
@@ -30,7 +30,7 @@
 	</tr>
 	<c:forEach var="entry" items="${listaViajes}" varStatus="i">
 		<tr id="item_${i.index}">
-			<td><a href="mostrarViaje?id=${entry.id}">${entry.id}</a></td>
+			<td>${entry.id}</td>
 			<td>${entry.departure.city}</td>
 			<td>${entry.destination.city}</td>
 			<td>${entry.availablePax}</td>
@@ -41,7 +41,7 @@
 			<td>${entry.closingDate}</td>
 			<td>${entry.status}</td>
 			<c:if test="${user.login != null}">
-				<td>${entry.promoterID}</td>
+				<td>${entry.promoterId}</td>
 				<td>${entry.comments}</td>
 			</c:if>
 		</tr>
