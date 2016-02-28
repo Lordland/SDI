@@ -11,6 +11,8 @@
 	<center><h1>Bienvenido <jsp:getProperty property="login" name="user" /> </h1></center>
  	<hr><br>
 	<br/>	
+	<a href = "modificar"> Modificar datos</a>
+	
 <%@ include file="listaViajes.jsp" %>
 
 
