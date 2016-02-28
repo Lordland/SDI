@@ -1,5 +1,5 @@
 <%@ page contentType="text/html"  pageEncoding="UTF-8"%>
-<%@ include file="comprobarNavegacion.jsp" %>
+<%@ include file="comprobarNavegacion.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -12,8 +12,13 @@
  	<hr><br>
 	<br/>	
 	<a href = "modificar"> Modificar datos</a>
+	<a href = "promotor">Promover viajes</a>
 	
 <%@ include file="listaViajes.jsp" %>
+
+<%@ include file="listaApuntados.jsp" %>
+
+
 
 
 </body>

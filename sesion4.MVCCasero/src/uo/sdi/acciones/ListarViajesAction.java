@@ -25,7 +25,6 @@ public class ListarViajesAction implements Accion {
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			Map<String, String[]> mapa = request.getParameterMap();
 			Date date;
-			Trip viaje;
 			String filtro = mapa.get("filtro")[0];
 			String buscar = mapa.get("filtroBuscar")[0];
 			if (filtro.equals("todo")) {
@@ -45,7 +44,7 @@ public class ListarViajesAction implements Accion {
 					}
 				}
 				//viaje = PersistenceFactory.newTripDao().findByDepartureDate(date);
-				request.setAttribute("listaViajes", viajes);
+				request.getServletContext().setAttribute("listaViajes", viajes);
 				Log.debug("Obtenida lista de viajes conteniendo 1 viaje");
 			}
 			if(filtro.equals("fllegada")){
