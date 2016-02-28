@@ -5,10 +5,11 @@
 <title>ShareMyTrip - Página de registro de usuario</title>
 </head>
 <body>
+
 <form action="crearUsuario" method="POST">
 	<table>
 		<tr>
-			<td>Usuario:</td>
+			<td>Usuario: </td>
 			<td id=login>
 				<input type="text" name="login" size="15"/>
 			</td>
