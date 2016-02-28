@@ -1,9 +1,14 @@
 package uo.sdi.acciones;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import uo.sdi.model.Seat;
+import uo.sdi.model.Trip;
 import uo.sdi.model.User;
 import uo.sdi.persistence.PersistenceFactory;
 import uo.sdi.persistence.UserDao;
@@ -24,6 +29,18 @@ public class ValidarseAction implements Accion {
 			User userByLogin = dao.findByLogin(nombreUsuario);
 			if (userByLogin!=null && userByLogin.getPassword().equals(password)) {
 				session.setAttribute("user", userByLogin);
+				List<Trip> apuntados = new ArrayList<Trip>();
+				List<Seat> asientos = PersistenceFactory.newSeatDao().findAll();
+				List<Trip> viajes = PersistenceFactory.newTripDao().findAll();
+				for (Seat s : asientos){
+					for(Trip t : viajes){
+						if(s.getTripId().equals(t.getId()) && userByLogin.getId().equals(s.getUserId())){
+							apuntados.add(t);
+						}
+							
+					}
+				}
+				session.setAttribute("listaApuntado", apuntados);
 				int contador=Integer.parseInt((String)request.getServletContext().getAttribute("contador"));
 				request.getServletContext().setAttribute("contador", String.valueOf(contador+1));
 				Log.info("El usuario [%s] ha iniciado sesión",nombreUsuario);

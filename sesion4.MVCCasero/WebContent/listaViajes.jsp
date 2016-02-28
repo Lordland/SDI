@@ -13,7 +13,6 @@
 </form>
 <table border="1">
 	<tr>
-		<th>ID viaje</th>
 		<th>Origen</th>
 		<th>Destino</th>
 		<th>Plazas libres</th>
@@ -30,7 +29,6 @@
 	</tr>
 	<c:forEach var="entry" items="${listaViajes}" varStatus="i">
 		<tr id="item_${i.index}">
-			<td>${entry.id}</td>
 			<td>${entry.departure.city}</td>
 			<td>${entry.destination.city}</td>
 			<td>${entry.availablePax}</td>
@@ -43,6 +41,12 @@
 			<c:if test="${user.login != null}">
 				<td>${entry.promoterId}</td>
 				<td>${entry.comments}</td>
+				<td>
+					<form action="apuntarViaje">
+						<input type="hidden" name="ID" value="${entry.id}"> <input
+							type="submit" value="Apuntarse">
+					</form>
+				</td>
 			</c:if>
 		</tr>
 	</c:forEach>
