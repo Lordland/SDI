@@ -4,7 +4,7 @@
 <html>
 <head>
 <body>
-	<form action="crearViaje" method="POST">
+	<form action="crear" method="POST">
 
 		<h1>Cree su viaje</h1>
 		<hr>
@@ -12,105 +12,99 @@
 		<table align="left">
 			<tr>
 				<td>Dirección de salida:</td>
-				<td id="name"><input type="text" name="login" size="15" /></td>
+				<td id="name"><input type="text" name="DSalida" size="15" /></td>
 			</tr>
 			<tr>
 				<td>Ciudad de salida:</td>
 				<td id="name"><br>
-				<input type="text" name="name" size="15" /></td>
+				<input type="text" name="CSalida" size="15" /></td>
 			</tr>
 			<tr>
 				<td>Estado de salida:</td>
-				<td id="name"><input type="text" name="surname" size="15" /></td>
+				<td id="name"><input type="text" name="ESalida" size="15" /></td>
 			</tr>
 			<tr>
 				<td>Pais de salida:</td>
 				<td id="name"><br>
-				<input type="text" name="email" size="15" /></td>
+				<input type="text" name="PSalida" size="15" /></td>
 			</tr>
 
 			<tr>
 				<td>Zipcode de salida:</td>
-				<td id="name"><input type="text" name="password" size="15" /></td>
+				<td id="name"><input type="text" name="ZSalida" size="15" /></td>
 			</tr>
 
 			<tr>
 				<td>Latitud de salida:</td>
-				<td id="name"><input type="text" name="password2" size="15" />
+				<td id="name"><input type="text" name="LaSalida" size="15" />
 				</td>
 			</tr>
 			<tr>
 				<td>Longitud de salida:</td>
-				<td id="name"><input type="text" name="password2" size="15" />
+				<td id="name"><input type="text" name="LoSalida" size="15" />
 				</td>
 			</tr>
 			<tr>
 				<td>Dirección de destino:</td>
-				<td id="name"><input type="text" name="login" size="15" /></td>
+				<td id="name"><input type="text" name="DDestino" size="15" /></td>
 			</tr>
 			<tr>
 				<td>Ciudad de destino:</td>
 				<td id="name"><br>
-				<input type="text" name="name" size="15" /></td>
+				<input type="text" name="CDestino" size="15" /></td>
 			</tr>
 			<tr>
 				<td>Estado de destino:</td>
-				<td id="name"><input type="text" name="surname" size="15" /></td>
+				<td id="name"><input type="text" name="EDestino" size="15" /></td>
 			</tr>
 			<tr>
 				<td>Pais de destino:</td>
 				<td id="name"><br>
-				<input type="text" name="email" size="15" /></td>
+				<input type="text" name="PDestino" size="15" /></td>
 			</tr>
 
 			<tr>
 				<td>Zipcode de destino:</td>
-				<td id=name><input type="text" name="password" size="15" /></td>
+				<td id=name><input type="text" name="ZDestino" size="15" /></td>
 			</tr>
 
 			<tr>
 				<td>Latitud de destino:</td>
-				<td id=name><input type="text" name="password2" size="15" /></td>
+				<td id=name><input type="text" name="LaDestino" size="15" /></td>
 			</tr>
 			<tr>
 				<td>Longitud de destino:</td>
-				<td id=name><input type="text" name="password2" size="15" /></td>
+				<td id=name><input type="text" name="LoDestino" size="15" /></td>
 			</tr>
 
 			<tr>
 				<td>Fecha de llegada:</td>
-				<td id=name><input type="datetime-local" name="password2" size="15" /></td>
+				<td id=name><input type="datetime-local" name="FLlegada" size="15" /></td>
 			</tr>
 			<tr>
 				<td>Fecha de salida:</td>
-				<td id=name><input type="datetime-local" name="password2" size="15" /></td>
+				<td id=name><input type="datetime-local" name="FSalida" size="15" /></td>
 			</tr>
 
 			<tr>
 				<td>Fecha limite:</td>
-				<td id=name><input type="datetime-local" name="password2" size="15" /></td>
+				<td id=name><input type="datetime-local" name="FLimite" size="15" /></td>
 			</tr>
-			<tr>
-				<td>Plazas disponibles:</td>
-				<td id=name><input type="number" name="password2" size="15" /></td>
-			</tr>
-
 			<tr>
 				<td>Plazas maximas:</td>
-				<td id=name><input type="number"  min="1" name="password2" size="15" /></td>
+				<td id=name><input type="number"  min="1" name="PMaximas" size="15" /></td>
 			</tr>
 			<tr>
 				<td>Coste:</td>
-				<td id=name><input type="number" name="password2" size="15" /></td>
+				<td id=name><input type="number" name="Coste" min= "1" size="15" /></td>
 			</tr>
 
 			<tr>
 				<td>Comentarios:</td>
-				<td id=name><input type="text" name="password2" size="15" /></td>
+				<td id=name><input type="text" name="Comentarios" size="15" /></td>
 			</tr>
 			<tr>
-				<td>Estado:</td>
-				<td id=name><input type="text" name="password2" size="15" /></td>
+				<td id=name><input type="submit" value = "Enviar" /></td>
 			</tr>
 		</table>
 	</form>

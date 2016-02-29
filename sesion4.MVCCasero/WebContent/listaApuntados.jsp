@@ -19,8 +19,8 @@
 				<td>${entry.viaje.destination.city}</td>
 				<td>${entry.viaje.departureDate}</td>
 				<td>${entry.relacionViaje}</td>
-				<td>
-					<form action="cancelarViaje">
+				<td> 
+					<form action="cancelar">
 						<input type="hidden" name="IdViaje" value="${entry.viaje.id}"> 
 						<input
 							type="submit" value="Cancelar">

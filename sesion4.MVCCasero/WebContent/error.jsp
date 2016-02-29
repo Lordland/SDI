@@ -5,7 +5,7 @@
 <title>Fallo de navegación</title>
 </head>
 <body>
-	<br>No se puede acceder a la página requerida. Tal vez se haya saltado un paso</br>
+	<br>No se puede acceder a la página requerida. Tal vez se haya saltado un paso
 	
 	<a id="inicio" href="login.jsp">Volver al login</a>
 </body>
