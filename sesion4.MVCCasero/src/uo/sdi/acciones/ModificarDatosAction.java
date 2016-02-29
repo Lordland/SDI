@@ -14,15 +14,31 @@ public class ModificarDatosAction implements Accion {
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {
-		
-		String nuevoEmail=request.getParameter("email");
+		String nName=request.getParameter("name");
+		String nSurname=request.getParameter("surname");
+		String nEmail=request.getParameter("email");
+		String nPassword=request.getParameter("password");
+		String pass2=request.getParameter("password2");
 		HttpSession session=request.getSession();
 		User usuario=((User)session.getAttribute("user"));
-		usuario.setEmail(nuevoEmail);
+		if(!nName.isEmpty() && !nName.contains(" ")){
+			usuario.setName(nName);
+		}
+		if(!nSurname.isEmpty() && !nSurname.contains(" ")){
+			usuario.setSurname(nSurname);
+		}
+		if(!nEmail.isEmpty() && !nEmail.contains(" ")){
+			usuario.setEmail(nEmail);
+		}
 		try {
+			if(!nPassword.isEmpty() && !nPassword.contains(" ") && nPassword.equals(pass2)){
+				usuario.setPassword(nPassword);
+			}else{
+				return "FRACASO";
+			}
 			UserDao dao = PersistenceFactory.newUserDao();
 			dao.update(usuario);
-			Log.debug("Modificado email de [%s] con el valor [%s]", usuario.getLogin(), nuevoEmail);
+			Log.debug("Modificado usuario [%s] ", usuario.getLogin());
 		}
 		catch (Exception e) {
 			Log.error("Algo ha ocurrido actualizando el email de [%s]", usuario.getLogin());
