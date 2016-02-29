@@ -38,8 +38,8 @@ public class ApuntarseViajeAction implements Accion {
 			dto.setUserId(usuario.getId());
 			// Generar listado a mostrar
 			ArrayList<ListaApuntados> lista = new ArrayList<ListaApuntados>();
-			lista = (ArrayList<ListaApuntados>) request.getSession().getAttribute("listaApuntado");
 			daoA.save(dto);
+			lista = (ArrayList<ListaApuntados>) request.getSession().getAttribute("listaApuntado");
 			ListaApuntados a = new ListaApuntados();
 			a.setViaje(viaje);
 			a.setUsuario(usuario);
