@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import uo.sdi.model.ListaApuntados;
 import uo.sdi.model.Seat;
 import uo.sdi.model.SeatStatus;
 import uo.sdi.model.Trip;
 import uo.sdi.model.User;
+import uo.sdi.persistence.ApplicationDao;
 import uo.sdi.persistence.PersistenceFactory;
 import uo.sdi.persistence.SeatDao;
 import uo.sdi.persistence.TripDao;
@@ -20,17 +22,17 @@ public class DesapuntarseViajeAction implements Accion{
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {
 		TripDao dao = PersistenceFactory.newTripDao();
-		Trip viaje = dao.findById(Long.valueOf( request.getParameter("ID")));
+		Trip viaje = dao.findById(Long.valueOf(request.getParameter("IdViaje")));
 		try {
 		User usuario = (User) request.getSession().getAttribute("user");
-		SeatDao daoS = PersistenceFactory.newSeatDao();
+		ApplicationDao daoS = PersistenceFactory.newApplicationDao();
 		Long[] ids = new Long[2];
 		ids[0] = usuario.getId();
 		ids[1] = viaje.getId();
 		daoS.delete(ids);
-		ArrayList<Trip> lista = (ArrayList<Trip>) request.getSession().getAttribute("listaApuntado");
-		for(Trip t : lista){
-			if(t.getId().equals(viaje.getId())){
+		ArrayList<ListaApuntados> lista = (ArrayList<ListaApuntados>) request.getSession().getAttribute("listaApuntado");
+		for(ListaApuntados t : lista){
+			if(t.getViaje().getId().equals(viaje.getId()) && t.getUsuario().getId().equals(usuario.getId())){
 				lista.remove(t);
 			}
 		}
