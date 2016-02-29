@@ -14,14 +14,15 @@
 
 		</tr>
 		<c:forEach var="entry" items="${listaApuntado}" varStatus="i">
-			<tr id="item_${i.index}">
-				<td>${entry.departure.city}</td>
-				<td>${entry.destination.city}</td>
-				<td>${entry.departureDate}</td>
-				<td>${entry.status}</td>
+			<tr id="${i.index}">
+				<td>${entry.viaje.departure.city}</td>
+				<td>${entry.viaje.destination.city}</td>
+				<td>${entry.viaje.departureDate}</td>
+				<td>${entry.relacionViaje}</td>
 				<td>
 					<form action="cancelarViaje">
-						<input type="hidden" name="ID" value="${entry.id}"> <input
+						<input type="hidden" name="IdViaje" value="${entry.viaje.id}"> 
+						<input
 							type="submit" value="Cancelar">
 					</form>
 				</td>

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import uo.sdi.model.Application;
+import uo.sdi.model.ListaApuntados;
 import uo.sdi.model.Seat;
 import uo.sdi.model.Trip;
 import uo.sdi.model.User;
@@ -19,50 +21,69 @@ public class ValidarseAction implements Accion {
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {
-		
-		String resultado="EXITO";
-		String nombreUsuario=request.getParameter("nombreUsuario");
-		String password=request.getParameter("password");
-		HttpSession session=request.getSession();
-		if (session.getAttribute("user")==null) {
+
+		String resultado = "EXITO";
+		String nombreUsuario = request.getParameter("nombreUsuario");
+		String password = request.getParameter("password");
+		HttpSession session = request.getSession();
+		if (session.getAttribute("user") == null) {
 			UserDao dao = PersistenceFactory.newUserDao();
 			User userByLogin = dao.findByLogin(nombreUsuario);
-			if (userByLogin!=null && userByLogin.getPassword().equals(password)) {
+			if (userByLogin != null
+					&& userByLogin.getPassword().equals(password)) {
 				session.setAttribute("user", userByLogin);
-				List<Trip> apuntados = new ArrayList<Trip>();
+				List<ListaApuntados> apuntados = new ArrayList<ListaApuntados>();
+				List<Application> reservas = PersistenceFactory
+						.newApplicationDao().findByUserId(userByLogin.getId());
 				List<Seat> asientos = PersistenceFactory.newSeatDao().findAll();
 				List<Trip> viajes = PersistenceFactory.newTripDao().findAll();
-				for (Seat s : asientos){
-					for(Trip t : viajes){
-						if(s.getTripId().equals(t.getId()) && userByLogin.getId().equals(s.getUserId())){
-							apuntados.add(t);
+
+				for (Trip t : viajes) {
+					for (Application ap : reservas) {
+						ListaApuntados a = new ListaApuntados();
+						if (ap.getTripId().equals(t.getId())
+								&& userByLogin.getId().equals(ap.getUserId())) {
+							a.setUsuario(userByLogin);
+							a.setViaje(t);
+							for (Seat s : asientos) {
+								if (s.getTripId().equals(t.getId())
+										&& userByLogin.getId().equals(
+												s.getUserId())) {
+									a.setAsiento(s);
+								}
+							}
+							a.setAsiento(null);
+							a.setRelacionViaje();
+							apuntados.add(a);
 						}
-							
 					}
 				}
+
 				session.setAttribute("listaApuntado", apuntados);
-				int contador=Integer.parseInt((String)request.getServletContext().getAttribute("contador"));
-				request.getServletContext().setAttribute("contador", String.valueOf(contador+1));
-				Log.info("El usuario [%s] ha iniciado sesión",nombreUsuario);
-			}
-			else {
+				int contador = Integer.parseInt((String) request
+						.getServletContext().getAttribute("contador"));
+				request.getServletContext().setAttribute("contador",
+						String.valueOf(contador + 1));
+				Log.info("El usuario [%s] ha iniciado sesión", nombreUsuario);
+			} else {
 				session.invalidate();
-				Log.info("El usuario [%s] no está registrado",nombreUsuario);
-				resultado="FRACASO";
+				Log.info("El usuario [%s] no está registrado", nombreUsuario);
+				resultado = "FRACASO";
 			}
+		} else if (!nombreUsuario.equals(session.getAttribute("user"))) {
+			Log.info(
+					"Se ha intentado iniciar sesión como [%s] teniendo la sesión iniciada como [%s]",
+					nombreUsuario,
+					((User) session.getAttribute("user")).getLogin());
+			session.invalidate();
+			resultado = "FRACASO";
 		}
-		else
-			if (!nombreUsuario.equals(session.getAttribute("user"))) {
-				Log.info("Se ha intentado iniciar sesión como [%s] teniendo la sesión iniciada como [%s]",nombreUsuario,((User)session.getAttribute("user")).getLogin());
-				session.invalidate();
-				resultado="FRACASO";
-			}
 		return resultado;
 	}
-	
+
 	@Override
 	public String toString() {
 		return getClass().getName();
 	}
-	
+
 }
