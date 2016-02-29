@@ -15,7 +15,7 @@
 	<a href = "promotor">Promover viajes</a>
 	
 <%@ include file="listaViajes.jsp" %>
-
+   
 <%@ include file="listaApuntados.jsp" %>
 
 

@@ -38,7 +38,7 @@ public class ListaApuntados {
 		return relacionViaje;
 	}
 	public void setRelacionViaje() {
-		if(usuario.getId().equals(viaje.getId()))
+		if(usuario.getId().equals(viaje.getPromoterId()))
 			this.relacionViaje = PeticionEstado.PROMOTER;
 		else if(asiento == null)
 			this.relacionViaje = PeticionEstado.PENDANT;
@@ -46,6 +46,7 @@ public class ListaApuntados {
 			this.relacionViaje = PeticionEstado.ACCEPTED;
 		else if(asiento.getStatus().equals(SeatStatus.EXCLUDED))
 			this.relacionViaje = PeticionEstado.EXCLUDED;
-
+		else if(viaje.getAvailablePax() == 0)
+			this.relacionViaje = PeticionEstado.NO_SEAT;
 	}
 }
