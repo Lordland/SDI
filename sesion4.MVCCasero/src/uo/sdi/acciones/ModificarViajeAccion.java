@@ -16,12 +16,13 @@ import uo.sdi.persistence.TripDao;
 import uo.sdi.persistence.UserDao;
 import alb.util.log.Log;
 
-public class CrearViajeAccion implements Accion {
+public class ModificarViajeAccion implements Accion {
 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {
-		Trip dto = new Trip();
+		TripDao dao = PersistenceFactory.newTripDao();
+		Trip dto = dao.findById(Long.parseLong(request.getParameter("IdViaje")));
 		String DSalida = request.getParameter("DSalida");
 		String CSalida = request.getParameter("CSalida");
 		String ESalida = request.getParameter("ESalida");
@@ -59,9 +60,8 @@ public class CrearViajeAccion implements Accion {
 		User u = (User) request.getSession().getAttribute("user");
 		dto.setPromoterId(u.getId());
 		try {
-				TripDao dao = PersistenceFactory.newTripDao();
-				dao.save(dto);
-				Log.debug("Creado el viaje [%s]",
+				dao.update(dto);
+				Log.debug("Modificado el viaje [%s]",
 						dto.getId());
 		} catch (Exception e) {
 			Log.error("Algo ha ocurrido creando el viaje [%s]",
