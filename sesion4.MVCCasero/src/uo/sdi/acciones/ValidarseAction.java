@@ -37,7 +37,6 @@ public class ValidarseAction implements Accion {
 						.newApplicationDao().findByUserId(userByLogin.getId());
 				List<Seat> asientos = PersistenceFactory.newSeatDao().findAll();
 				List<Trip> viajes = PersistenceFactory.newTripDao().findAll();
-
 				for (Trip t : viajes) {
 					for (Application ap : reservas) {
 						ListaApuntados a = new ListaApuntados();
@@ -51,15 +50,23 @@ public class ValidarseAction implements Accion {
 												s.getUserId())) {
 									a.setAsiento(s);
 								}
+								else{
+									a.setAsiento(null);
+								}
 							}
-							a.setAsiento(null);
 							a.setRelacionViaje();
 							apuntados.add(a);
 						}
 					}
 				}
-
 				session.setAttribute("listaApuntado", apuntados);
+				List<Trip> promovido = new ArrayList<Trip>();
+				viajes = PersistenceFactory.newTripDao().findAll();
+				for(Trip t : viajes) {
+					if(t.getPromoterId().equals(userByLogin.getId()))
+						promovido.add(t);
+				}
+				session.setAttribute("listaPromotor", promovido);
 				int contador = Integer.parseInt((String) request
 						.getServletContext().getAttribute("contador"));
 				request.getServletContext().setAttribute("contador",
