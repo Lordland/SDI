@@ -1,6 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="comprobarNavegacion.jsp"%>
 
 <h2>Buscar por</h2>
 <form method="GET" action="cargar">

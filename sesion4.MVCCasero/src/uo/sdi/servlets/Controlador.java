@@ -156,7 +156,9 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/registro.jsp");
 		opcionResJSP.put("registrarse", resJSP);
-		
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/login.jsp");
+		opcionResJSP.put("cerrarSesion", resJSP);
 		mapaDeNavegacion.put("PUBLICO",opcionResJSP);
 		
 		// Crear mapas auxiliares vacíos
@@ -193,9 +195,6 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/promotor.jsp");
 		opcionResJSP.put("promotor", resJSP);
-		resJSP=new HashMap<String, String>();
-		resJSP.put("EXITO","/login.jsp");
-		opcionResJSP.put("cerrarSesion", resJSP);
 		mapaDeNavegacion.put("REGISTRADO",opcionResJSP);
 	}
 			
