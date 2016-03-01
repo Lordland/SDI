@@ -40,20 +40,6 @@
 		<url-pattern>*.htc</url-pattern>
 		<url-pattern>*.gif</url-pattern>
 	</servlet-mapping>
-
-	<filter>
-		<filter-name>EncodingFilter</filter-name>
-		<filter-class>com.cj.encflt.EncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>EncodingFilter</filter-name>
-		<url-pattern>/*.jsp</url-pattern>
-	</filter-mapping>
-
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
