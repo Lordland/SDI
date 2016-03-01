@@ -118,6 +118,9 @@
 				<td>Estado:</td>
 				<td id=name><input type="text" name="password2" size="15" /></td>
 			</tr>
+			<tr>
+				<td id=name><input type="submit" value = "Enviar" /></td>
+			</tr>
 		</table>
 	</form>
 </body>

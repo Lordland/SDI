@@ -114,6 +114,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		mapaPublico.put("cargar", new ListarViajesAction());
 		mapaPublico.put("crearUsuario", new CrearUsuarioAccion());
 		mapaPublico.put("registrarse", new ExitoAccion());
+		mapaPublico.put("error", new ExitoAccion());
 		mapaDeAcciones.put("PUBLICO", mapaPublico);
 		
 		Map<String,Accion> mapaRegistrado=new HashMap<String,Accion>();
@@ -126,9 +127,12 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		mapaRegistrado.put("cancelar", new DesapuntarseViajeAction());
 		mapaRegistrado.put("modificarViaje", new ExitoAccion());
 		mapaRegistrado.put("crearViaje", new ExitoAccion());
-		mapaRegistrado.put("promotor", new ExitoAccion());
+		mapaRegistrado.put("promotor", new CargarListaAction());
 		mapaRegistrado.put("crear", new CrearViajeAccion());
 		mapaRegistrado.put("cancelarViaje", new CancelarViajeAction());
+		mapaRegistrado.put("aceptarPeticion", new AceptarPeticionAction());
+		mapaRegistrado.put("rechazarPeticion", new CancelarPeticionAction());
+		mapaRegistrado.put("error", new ExitoAccion());
 		mapaDeAcciones.put("REGISTRADO", mapaRegistrado);
 	}
 	
@@ -159,6 +163,9 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/login.jsp");
 		opcionResJSP.put("cerrarSesion", resJSP);
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/error.jsp");
+		opcionResJSP.put("error", resJSP);
 		mapaDeNavegacion.put("PUBLICO",opcionResJSP);
 		
 		// Crear mapas auxiliares vacíos
@@ -195,6 +202,15 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/promotor.jsp");
 		opcionResJSP.put("promotor", resJSP);
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/promotor.jsp");
+		opcionResJSP.put("aceptarPeticion", resJSP);
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/promotor.jsp");
+		opcionResJSP.put("rechazarPeticion", resJSP);
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/error.jsp");
+		opcionResJSP.put("error", resJSP);
 		mapaDeNavegacion.put("REGISTRADO",opcionResJSP);
 	}
 			

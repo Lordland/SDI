@@ -50,9 +50,6 @@ public class ValidarseAction implements Accion {
 												s.getUserId())) {
 									a.setAsiento(s);
 								}
-								else{
-									a.setAsiento(null);
-								}
 							}
 							a.setRelacionViaje();
 							apuntados.add(a);
