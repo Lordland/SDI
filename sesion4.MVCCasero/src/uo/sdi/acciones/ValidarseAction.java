@@ -32,42 +32,8 @@ public class ValidarseAction implements Accion {
 			if (userByLogin != null
 					&& userByLogin.getPassword().equals(password)) {
 				session.setAttribute("user", userByLogin);
-				List<ListaApuntados> apuntados = new ArrayList<ListaApuntados>();
-				List<Application> reservas = PersistenceFactory
-						.newApplicationDao().findByUserId(userByLogin.getId());
-				List<Seat> asientos = PersistenceFactory.newSeatDao().findAll();
-				List<Trip> viajes = PersistenceFactory.newTripDao().findAll();
-				for (Trip t : viajes) {
-					for (Application ap : reservas) {
-						ListaApuntados a = new ListaApuntados();
-						if (ap.getTripId().equals(t.getId())
-								&& userByLogin.getId().equals(ap.getUserId())) {
-							a.setUsuario(userByLogin);
-							a.setViaje(t);
-							for (Seat s : asientos) {
-								if (s.getTripId().equals(t.getId())
-										&& userByLogin.getId().equals(
-												s.getUserId())) {
-									a.setAsiento(s);
-								}
-							}
-							a.setRelacionViaje();
-							apuntados.add(a);
-						}
-					}
-				}
-				session.setAttribute("listaApuntado", apuntados);
-				List<Trip> promovido = new ArrayList<Trip>();
-				viajes = PersistenceFactory.newTripDao().findAll();
-				for(Trip t : viajes) {
-					if(t.getPromoterId().equals(userByLogin.getId()))
-						promovido.add(t);
-				}
-				session.setAttribute("listaPromotor", promovido);
-				int contador = Integer.parseInt((String) request
-						.getServletContext().getAttribute("contador"));
-				request.getServletContext().setAttribute("contador",
-						String.valueOf(contador + 1));
+				setListaApuntados(session, userByLogin);
+				setListaViajesPromovidos(session, userByLogin);
 				Log.info("El usuario [%s] ha iniciado sesión", nombreUsuario);
 			} else {
 				session.invalidate();
@@ -83,6 +49,45 @@ public class ValidarseAction implements Accion {
 			resultado = "FRACASO";
 		}
 		return resultado;
+	}
+
+	private void setListaViajesPromovidos(HttpSession session, User userByLogin) {
+		List<Trip> viajes;
+		List<Trip> promovido = new ArrayList<Trip>();
+		viajes = PersistenceFactory.newTripDao().findAll();
+		for(Trip t : viajes) {
+			if(t.getPromoterId().equals(userByLogin.getId()))
+				promovido.add(t);
+		}
+		session.setAttribute("listaPromotor", promovido);
+	}
+
+	private void setListaApuntados(HttpSession session, User userByLogin) {
+		List<ListaApuntados> apuntados = new ArrayList<ListaApuntados>();
+		List<Application> reservas = PersistenceFactory
+				.newApplicationDao().findByUserId(userByLogin.getId());
+		List<Seat> asientos = PersistenceFactory.newSeatDao().findAll();
+		List<Trip> viajes = PersistenceFactory.newTripDao().findAll();
+		for (Trip t : viajes) {
+			for (Application ap : reservas) {
+				ListaApuntados a = new ListaApuntados();
+				if (ap.getTripId().equals(t.getId())
+						&& userByLogin.getId().equals(ap.getUserId())) {
+					a.setUsuario(userByLogin);
+					a.setViaje(t);
+					for (Seat s : asientos) {
+						if (s.getTripId().equals(t.getId())
+								&& userByLogin.getId().equals(
+										s.getUserId())) {
+							a.setAsiento(s);
+						}
+					}
+					a.setRelacionViaje();
+					apuntados.add(a);
+				}
+			}
+		}
+		session.setAttribute("listaApuntado", apuntados);
 	}
 
 	@Override

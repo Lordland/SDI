@@ -22,6 +22,7 @@ public class ModificarViajeAccion implements Accion {
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {
 		TripDao dao = PersistenceFactory.newTripDao();
+		Long id = (Long) request.getSession().getAttribute("IdViaje");
 		Trip dto = dao.findById(Long.parseLong(request.getParameter("IdViaje")));
 		String DSalida = request.getParameter("DSalida");
 		String CSalida = request.getParameter("CSalida");

@@ -21,6 +21,14 @@ public class CargarListaAction implements Accion {
 		List<Application> reservas = PersistenceFactory.newApplicationDao()
 				.findAll();
 		List<Seat> asientos = PersistenceFactory.newSeatDao().findAll();
+		setListaApuntadosPromotor(request, apuntados, reservas, asientos);
+		return "EXITO";
+	}
+
+	private void setListaApuntadosPromotor(HttpServletRequest request,
+			List<ListaApuntados> apuntados, List<Application> reservas,
+			List<Seat> asientos) {
+		@SuppressWarnings("unchecked")
 		List<Trip> viajes = (List<Trip>) request.getSession().getAttribute(
 				"listaPromotor");
 		for (Trip t : viajes) {
@@ -42,7 +50,6 @@ public class CargarListaAction implements Accion {
 			}
 		}
 		request.getSession().setAttribute("listaApuntadoPromotor", apuntados);
-		return "EXITO";
 	}
 
 }
