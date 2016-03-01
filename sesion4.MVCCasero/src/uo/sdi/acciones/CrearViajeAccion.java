@@ -67,7 +67,7 @@ public class CrearViajeAccion implements Accion {
 			Log.error("Algo ha ocurrido creando el viaje [%s]",
 					dto.getId());
 		}
-		return "EXITO";
+		return "EXITO"; 
 	}
 
 }
