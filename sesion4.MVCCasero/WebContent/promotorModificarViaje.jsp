@@ -6,8 +6,9 @@
 <html>
 <head>
 <body>
-	<form action="modificarViaje" method="post">
+	<form action="modificarViajeDefinitivo" method="post">
 
+<br> ${idViaje }
 		<h2>Modifique su viaje</h2>
 		<hr>
 		<br>
@@ -119,6 +120,7 @@
 				<td id=name><input type="text" name="password2" size="15" /></td>
 			</tr>
 			<tr>
+			<td id=name><input type="hidden" name = "IdViaje" value ="<% request.getAttribute("IdViaje"); %>" /></td>
 				<td id=name><input type="submit" value = "Enviar" /></td>
 			</tr>
 		</table>
