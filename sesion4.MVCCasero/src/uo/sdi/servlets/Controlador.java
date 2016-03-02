@@ -155,7 +155,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		opcionResJSP.put("cargar", resJSP);
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/login.jsp");
-		resJSP.put("FRACASO","/errorRegistro.jsp");
+		resJSP.put("FRACASO","/error.jsp");
 		opcionResJSP.put("crearUsuario", resJSP);
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/registro.jsp");
@@ -200,6 +200,9 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/promotorCrearViaje.jsp");
 		opcionResJSP.put("crearViaje", resJSP);
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/promotor.jsp");
+		opcionResJSP.put("crear", resJSP);
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/promotor.jsp");
 		opcionResJSP.put("promotor", resJSP);
