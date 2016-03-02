@@ -27,27 +27,35 @@
 			<th>Comentarios</th>
 		</c:if>
 	</tr>
+	<jsp:useBean id="today" class="java.util.Date" />
+	<c:out value="${today}" />
 	<c:forEach var="entry" items="${listaViajes}" varStatus="i">
-		<tr id="item_${i.index}">
-			<td>${entry.departure.city}</td>
-			<td>${entry.destination.city}</td>
-			<td>${entry.availablePax}</td>
-			<td>${entry.maxPax}</td>
-			<td>${entry.estimatedCost}</td>
-			<td>${entry.arrivalDate}</td>
-			<td>${entry.departureDate}</td>
-			<td>${entry.closingDate}</td>
-			<td>${entry.status}</td>
-			<c:if test="${user.login != null}">
-				<td>${entry.promoterId}</td>
-				<td>${entry.comments}</td>
-				<td>
-					<form action="apuntarViaje">
-						<input type="hidden" name="ID" value="${entry.id}"> <input
-							type="submit" value="Apuntarse">
-					</form>
-				</td>
+		<c:if test="${entry.closingDate.time gt  today.time}">
+			<c:if test="${entry.status != 'CANCELLED'}">
+				<c:if test="${entry.promoterId != user.id}">
+					<tr id="item_${i.index}">
+						<td>${entry.departure.city}</td>
+						<td>${entry.destination.city}</td>
+						<td>${entry.availablePax}</td>
+						<td>${entry.maxPax}</td>
+						<td>${entry.estimatedCost}</td>
+						<td>${entry.arrivalDate}</td>
+						<td>${entry.departureDate}</td>
+						<td>${entry.closingDate}</td>
+						<td>${entry.status}</td>
+						<c:if test="${user.login != null}">
+							<td>${entry.promoterId}</td>
+							<td>${entry.comments}</td>
+							<td>
+								<form action="apuntarViaje">
+									<input type="hidden" name="ID" value="${entry.id}"> <input
+										type="submit" value="Apuntarse">
+								</form>
+							</td>
+						</c:if>
+					</tr>
+				</c:if>
 			</c:if>
-		</tr>
+		</c:if>
 	</c:forEach>
 </table>

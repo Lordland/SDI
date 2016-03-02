@@ -21,17 +21,16 @@ public class ModificarViajeAccion implements Accion {
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {
-		TripDao dao = PersistenceFactory.newTripDao();
-		Long id = (Long) request.getSession().getAttribute("IdViaje");
-		Trip dto = dao.findById(Long.parseLong(request.getParameter("IdViaje")));
+		Trip dto = (Trip) request.getSession().getAttribute("viajeMod");
 		String DSalida = request.getParameter("DSalida");
 		String CSalida = request.getParameter("CSalida");
 		String ESalida = request.getParameter("ESalida");
 		String PSalida = request.getParameter("PSalida");
 		String ZSalida = request.getParameter("ZSalida");
-		double LaSalida = Double.parseDouble(request.getParameter("LaSalida"));
-		double LoSalida = Double.parseDouble(request.getParameter("LoSalida"));
-		Waypoint salidaW = new Waypoint(LaSalida, LoSalida);
+		String LaSalida = request.getParameter("LaSalida");
+		double LaSalida2 = Double.valueOf(LaSalida);
+		double LoSalida = Double.valueOf(request.getParameter("LoSalida"));
+		Waypoint salidaW = new Waypoint(LaSalida2, LoSalida);
 		AddressPoint salida = new AddressPoint(DSalida, CSalida, ESalida, PSalida, ZSalida, salidaW);
 		dto.setDeparture(salida);
 		String DDestino = request.getParameter("DDestino");
@@ -39,16 +38,16 @@ public class ModificarViajeAccion implements Accion {
 		String EDestino = request.getParameter("EDestino");
 		String PDestino = request.getParameter("PDestino");
 		String ZDestino = request.getParameter("ZDestino");
-		Double LaDestino = Double.parseDouble(request.getParameter("LaDestino"));
-		Double LoDestino = Double.parseDouble(request.getParameter("LoDestino"));
+		Double LaDestino = Double.valueOf(request.getParameter("LaDestino"));
+		Double LoDestino = Double.valueOf(request.getParameter("LoDestino"));
 		Waypoint llegadaW = new Waypoint(LaDestino, LoDestino);
 		AddressPoint destino = new AddressPoint(DDestino, CDestino, EDestino, PDestino, ZDestino, llegadaW);
 		dto.setDestination(destino);
-		Timestamp FLlegada = Timestamp.valueOf(request.getParameter("FLlegada").replace("T", " ").concat(":00"));
+		Timestamp FLlegada = Timestamp.valueOf(request.getParameter("FLlegada").replace("T", " "));
 		dto.setArrivalDate(FLlegada);
-		Timestamp FSalida = Timestamp.valueOf(request.getParameter("FSalida").replace("T", " ").concat(":00"));
+		Timestamp FSalida = Timestamp.valueOf(request.getParameter("FSalida").replace("T", " "));
 		dto.setDepartureDate(FSalida);
-		Timestamp FLimite = Timestamp.valueOf(request.getParameter("FLimite").replace("T", " ").concat(":00"));
+		Timestamp FLimite = Timestamp.valueOf(request.getParameter("FLimite").replace("T", " "));
 		dto.setClosingDate(FLimite);
 		int PMaximas = Integer.parseInt(request.getParameter("PMaximas"));
 		dto.setAvailablePax(PMaximas);
@@ -61,7 +60,7 @@ public class ModificarViajeAccion implements Accion {
 		User u = (User) request.getSession().getAttribute("user");
 		dto.setPromoterId(u.getId());
 		try {
-				dao.update(dto);
+				PersistenceFactory.newTripDao().update(dto);
 				Log.debug("Modificado el viaje [%s]",
 						dto.getId());
 		} catch (Exception e) {
@@ -70,5 +69,4 @@ public class ModificarViajeAccion implements Accion {
 		}
 		return "EXITO";
 	}
-
 }

@@ -5,11 +5,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <body>
-	<center><h1>Promotor </h1></center>
- 	<hr><br>
-	<br/>	
+	<center>
+		<h1>Promotor</h1>
+	</center>
+	<hr>
+	<br>
+	<br />
 
-<a href = "crearViaje">Crear viaje</a>
+	<a href="crearViaje">Crear viaje</a>
 
 	<table border="1" align="center">
 		<tr>
@@ -36,19 +39,51 @@
 				<td>${entry.departureDate}</td>
 				<td>${entry.closingDate}</td>
 				<td>${entry.status}</td>
-				<td><form method="POST" action="cancelarViaje">
+				<c:if test="${entry.status != 'CANCELLED' }">
+					<c:if test="${entry.status != 'CLOSED' }">
+						<c:if test="${entry.status != 'DONE' }">
+							<td><form method="POST" action="cancelarViaje">
+									<input type="hidden" name=IdViaje value="${entry.id}">
+										<input type="submit" value="Cancelar">
+								</form></td>
+						</c:if>
+					</c:if>
+				</c:if>
+				<c:if test="${entry.status != 'OPEN' }">
+					<td><form method="POST" action="cancelarViaje">
+							<input type="hidden" name=IdViaje value="${entry.id}"> <input
+								type="submit" value="Abrir">
+						</form></td>
+				</c:if>
+				<c:if test="${entry.status != 'CLOSED' }">
+					<c:if test="${entry.status != 'CANCELLED' }">
+						<c:if test="${entry.status != 'DONE' }">
+						<td><form method="POST" action="cancelarViaje">
+								<input type="hidden" name=IdViaje value="${entry.id}"> <input
+									type="hidden" name=estado value="cerrado"> <input
+									type="submit" value="Cerrar viaje">
+							</form></td>
+						</c:if>
+					</c:if>
+				</c:if>
+				<c:if test="${entry.status != 'DONE' }">
+					<td><form method="POST" action="cancelarViaje">
+							<input type="hidden" name=IdViaje value="${entry.id}"> <input
+								type="hidden" name=estado value="hecho"> <input
+								type="submit" value="Finalizar viaje">
+						</form></td>
+				</c:if>
+				<c:if test="${entry.status eq 'OPEN' }">
+					<td><form method="POST" action="modificarViaje">
 						<input type="hidden" name=IdViaje value="${entry.id}"> <input
-							type="submit" value="Cancelar">
+							type="submit" value="Modificar">
 					</form></td>
-				<td><form method="POST" action="modificarViaje">
-				<input type="hidden" name=IdViaje value="${entry.id}">
-					<input type="submit" value="Modificar">
-					</form></td>
+				</c:if>
 			</tr>
 		</c:forEach>
 	</table>
 
-<%@ include file="listaApuntadosPromotor.jsp" %>
+	<%@ include file="listaApuntadosPromotor.jsp"%>
 
 
 </body>
