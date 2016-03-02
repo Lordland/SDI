@@ -23,7 +23,7 @@
 					<form action="cancelar">
 						<input type="hidden" name="IdViaje" value="${entry.viaje.id}"> 
 						<input
-							type="submit" value="Cancelar">
+							id="cancelar" type="submit" value="Cancelar">
 					</form>
 				</td>
 			</tr>

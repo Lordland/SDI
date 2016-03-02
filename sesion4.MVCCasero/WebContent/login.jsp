@@ -18,7 +18,7 @@
 			<table align="center">
 				<tr>
 					<td align="right">Su identificador de usuario</td>
-					<td><input type="text" name="nombreUsuario" align="left"
+					<td id=login><input type="text" name="nombreUsuario" align="left"
 						size="15"></td>
 				</tr>
 				<tr>
@@ -27,7 +27,7 @@
 						size="15"></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Enviar" /></td>
+					<td><input type="submit" name="enviar" value="Enviar" /></td>
 				</tr>
 			</table>
 		</form>

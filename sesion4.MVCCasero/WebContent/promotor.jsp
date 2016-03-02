@@ -6,6 +6,7 @@
 <html>
 <link rel="stylesheet" type="text/css" 
       href="styles/estilo.css" />
+<title>ShareMyTrip - promotor</title>
 <body>
 
 	<center>
@@ -15,7 +16,7 @@
 	<br>
 	<br />
 
-	<a href="crearViaje">Crear viaje</a>
+	<a id="crearV" href="crearViaje">Crear viaje</a>
 
 	<table border="1" align="center">
 		<tr>

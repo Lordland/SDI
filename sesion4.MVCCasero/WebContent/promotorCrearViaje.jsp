@@ -8,6 +8,7 @@
 <head>
 <link rel="stylesheet" type="text/css" 
       href="styles/estilo.css" />
+ <title>ShareMyTrip - Crear viaje</title>     
 <body>
 	<form action="crear" method="POST">
 

@@ -15,7 +15,7 @@
  	<hr><br>
 	<br/>	
 	<a href = "modificar"> Modificar datos</a>
-	<a href = "promotor">Promover viajes</a>
+	<a id="promotor" href = "promotor">Promover viajes</a>
 	
 <%@ include file="listaViajes.jsp" %>
    

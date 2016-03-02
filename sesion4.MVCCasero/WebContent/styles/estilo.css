@@ -3,7 +3,7 @@
 body {
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	color: black;
-	background: #F5F5DC;
+	background: #CCCCFF;
 }
 
 table {
@@ -21,4 +21,5 @@ input {
 	appearance: searchfield;
 	box-shadow: none;
 	border-radius: none;
+	background: #E6E6FA;
 }

@@ -48,8 +48,8 @@
 							<td>${entry.promoterId}</td>
 							<td>${entry.comments}</td>
 							<td>
-								<form action="apuntarViaje">
-									<input type="hidden" name="ID" value="${entry.id}"> <input
+								<form name="botonForm" action="apuntarViaje">
+									<input id="apuntarse" type="hidden" name="apuntarse" value="${entry.id}"> <input
 										type="submit" value="Apuntarse">
 								</form>
 							</td>

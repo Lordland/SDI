@@ -3,7 +3,7 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%
 	java.util.Date dnow = new java.util.Date();
-	String currentDate = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(dnow);
+	String currentDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(dnow);
 %>
 <p>
 	La fecha actual es:
