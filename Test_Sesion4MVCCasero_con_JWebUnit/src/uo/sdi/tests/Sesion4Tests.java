@@ -34,7 +34,6 @@ public class Sesion4Tests {
         assertTextInElement("login", "user1");  // Comprobar cierto elemento contiene cierto texto
         assertTextInElement("name", "Fernando");  // Comprobar cierto elemento contiene cierto texto
         assertTextPresent("Es Vd el usuario número:"); // Comprobar cierto texto está presente
-        submi
     }
 
     @Test
