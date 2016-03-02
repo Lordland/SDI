@@ -12,7 +12,7 @@
 
 
 	<h2>Modifique su viaje</h2>
-	<hr>
+	<hr> 
 	<br>
 	<form action="modificarViajeDefinitivo" method="post">
 		<table align="left">
