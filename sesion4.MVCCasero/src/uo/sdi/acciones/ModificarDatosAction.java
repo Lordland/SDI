@@ -10,7 +10,7 @@ import uo.sdi.persistence.UserDao;
 import alb.util.log.Log;
 
 public class ModificarDatosAction implements Accion {
-
+ 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {

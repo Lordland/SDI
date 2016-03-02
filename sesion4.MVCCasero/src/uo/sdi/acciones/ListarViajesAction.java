@@ -17,7 +17,7 @@ public class ListarViajesAction implements Accion {
 
 	@Override
 	public String execute(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) { 
 
 		List<Trip> viajes;
 
