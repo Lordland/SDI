@@ -24,7 +24,7 @@ public class CrearUsuarioAccion implements Accion {
 		dto.setStatus(UserStatus.ACTIVE);
 		String pass2 = request.getParameter("password2");
 		try {
-			if (dto.getPassword().equals(pass2)) {
+			if (dto.getPassword().equals(pass2) && comprobarDto(dto)) {
 				UserDao dao = PersistenceFactory.newUserDao();
 				dao.save(dto);
 				Log.debug("Creado el usuario [%s]",
@@ -38,6 +38,10 @@ public class CrearUsuarioAccion implements Accion {
 					dto.getLogin());
 		}
 		return "EXITO";
+	}
+
+	private boolean comprobarDto(User dto) {
+		return dto.getEmail().isEmpty() ?  false : dto.getLogin().isEmpty() ?  false : dto.getName().isEmpty() ?  false : dto.getSurname().isEmpty() ? false : true;
 	}
 
 }
