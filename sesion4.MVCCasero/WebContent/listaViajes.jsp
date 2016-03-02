@@ -2,13 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h2>Buscar por</h2>
-<form method="GET" action="cargar">
+<form name = filtrado method="GET" action="cargar">
 	<select name="filtro">
 		<option value="todo">Mostrar todos los viajes</option>
 		<option value="fsalida">Fecha de salida</option>
 		<option value="fllegada">Fecha de llegada</option>
 		<option value="destino">Destino</option>
-	</select> <input type="text" name="filtroBuscar" size="15"> <input
+	</select>
+	 <input type="text" name="filtroBuscar" size="15" value = "formato fecha dd/MM/yyyy"> <input
 		type="submit">
 </form>
 <table border="1">

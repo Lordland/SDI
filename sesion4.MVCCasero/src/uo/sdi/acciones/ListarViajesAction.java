@@ -22,7 +22,7 @@ public class ListarViajesAction implements Accion {
 		List<Trip> viajes;
 
 		try {
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 			Map<String, String[]> mapa = request.getParameterMap();
 			Date date;
 			String filtro = mapa.get("filtro")[0];
@@ -35,34 +35,32 @@ public class ListarViajesAction implements Accion {
 				System.out.println("huehuehuehue");
 			}
 			if(filtro.equals("fsalida")){
-				List<Trip> v = new ArrayList();
+				List<Trip> v = new ArrayList<Trip>();
 				date = formatter.parse(buscar);
 				viajes = PersistenceFactory.newTripDao().findAll();
 				for(Trip t : viajes){
-					if(t.getDepartureDate().equals(date)){
+					if(t.getDepartureDate().after((date))){
 						v.add(t);
 					}
 				}
-				//viaje = PersistenceFactory.newTripDao().findByDepartureDate(date);
-				request.getServletContext().setAttribute("listaViajes", viajes);
+				request.getServletContext().setAttribute("listaViajes", v);
 				Log.debug("Obtenida lista de viajes conteniendo 1 viaje");
 			}
 			if(filtro.equals("fllegada")){
-				List<Trip> v = new ArrayList();
+				List<Trip> v = new ArrayList<Trip>();
 				date = formatter.parse(buscar);
 				viajes = PersistenceFactory.newTripDao().findAll();
 				for(Trip t : viajes){
-					if(t.getArrivalDate().equals(date)){
+					if(t.getArrivalDate().after(date)){
 						v.add(t);
 					}
 				} 
-				//viaje = PersistenceFactory.newTripDao().findByArrivalDate(date);
-				request.setAttribute("listaViajes", v);
+				request.getServletContext().setAttribute("listaViajes", v);
 				Log.debug("Obtenida lista de viajes conteniendo [%d] viajes",
 						v.size());
 			}
 			if(filtro.equals("destino")){
-				List<Trip> v = new ArrayList();;
+				List<Trip> v = new ArrayList<Trip>();;
 				viajes = PersistenceFactory.newTripDao().findAll();
 				for(Trip t : viajes){
 					if(t.getDestination().getCity().equals(buscar)){
