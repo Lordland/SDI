@@ -5,6 +5,8 @@
 <head>
 <title>ShareMyTrip - Página de registro de usuario</title>
 </head>
+<link rel="stylesheet" type="text/css" 
+      href="styles/estilo.css" />
 <body>
 
 <form action="crearUsuario" method="POST">

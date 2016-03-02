@@ -4,7 +4,10 @@
 <%@ include file="cerrarSesion.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
+<link rel="stylesheet" type="text/css" 
+      href="styles/estilo.css" />
 <body>
+
 	<center>
 		<h1>Promotor</h1>
 	</center>
