@@ -89,21 +89,21 @@
 
 				<tr>
 					<td>Fecha de llegada:</td>
-					<td id=name><input type="datetime-local" id="myLocalDate"
-						name="FLlegada" size="15" value="${viajeMod}.arrivalDate" /></td>
+					<td id=name><input type="datetime-local" 
+						name="FLlegada" size="15" value="${llegada}" /></td>
 				</tr>
 				<tr>
 
 
 					<td>Fecha de salida:</td>
 					<td id=name><input type="datetime-local" name="FSalida"
-						size="15" value="${viajeMod.getDepartureDateT()}"/></td>
+						size="15" value="${salida}"/></td>
 				</tr>
 
 				<tr>
 					<td>Fecha limite:</td>
 					<td id=name><input type="datetime-local" name="FLimite"
-						size="15" value="${viajeMod.closingDate}" /></td>
+						size="15" value="${cierre}" /></td>
 				</tr>
 				<tr>
 					<td>Plazas maximas:</td>

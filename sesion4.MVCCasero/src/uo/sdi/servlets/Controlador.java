@@ -134,6 +134,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		mapaRegistrado.put("aceptarPeticion", new AceptarPeticionAction());
 		mapaRegistrado.put("rechazarPeticion", new CancelarPeticionAction());
 		mapaRegistrado.put("error", new ExitoAccion());
+		mapaRegistrado.put("principal", new ExitoAccion());
 		mapaDeAcciones.put("REGISTRADO", mapaRegistrado);
 	}
 	
@@ -150,20 +151,15 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resJSP.put("FRACASO","/login.jsp");
 		opcionResJSP.put("validarse", resJSP);
 		resJSP=new HashMap<String, String>();
-		resJSP.put("EXITO","/listaViajes.jsp");
-		opcionResJSP.put("listarViajes", resJSP);
-		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/login.jsp");
 		opcionResJSP.put("cargar", resJSP);
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/login.jsp");
+		resJSP.put("FRACASO","/errorRegistro.jsp");
 		opcionResJSP.put("crearUsuario", resJSP);
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/registro.jsp");
 		opcionResJSP.put("registrarse", resJSP);
-		resJSP=new HashMap<String, String>();
-		resJSP.put("EXITO","/login.jsp");
-		opcionResJSP.put("cerrarSesion", resJSP);
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/error.jsp");
 		opcionResJSP.put("error", resJSP);
@@ -178,6 +174,7 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		opcionResJSP.put("validarse", resJSP);
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/principal.jsp");
+		resJSP.put("FRACASO","/errorRegistro.jsp");
 		opcionResJSP.put("modificarDatos", resJSP);
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/modificar.jsp");
@@ -215,6 +212,9 @@ public class Controlador extends javax.servlet.http.HttpServlet {
 		resJSP=new HashMap<String, String>();
 		resJSP.put("EXITO","/error.jsp");
 		opcionResJSP.put("error", resJSP);
+		resJSP=new HashMap<String, String>();
+		resJSP.put("EXITO","/principal.jsp");
+		opcionResJSP.put("principal", resJSP);
 		mapaDeNavegacion.put("REGISTRADO",opcionResJSP);
 	}
 			

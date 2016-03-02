@@ -9,11 +9,8 @@ import uo.sdi.model.AddressPoint;
 import uo.sdi.model.Trip;
 import uo.sdi.model.TripStatus;
 import uo.sdi.model.User;
-import uo.sdi.model.UserStatus;
 import uo.sdi.model.Waypoint;
 import uo.sdi.persistence.PersistenceFactory;
-import uo.sdi.persistence.TripDao;
-import uo.sdi.persistence.UserDao;
 import alb.util.log.Log;
 
 public class ModificarViajeAccion implements Accion {

@@ -2,8 +2,6 @@ package uo.sdi.acciones;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import uo.sdi.model.User;
 import uo.sdi.model.UserStatus;
 import uo.sdi.persistence.PersistenceFactory;
@@ -24,7 +22,7 @@ public class CrearUsuarioAccion implements Accion {
 		dto.setStatus(UserStatus.ACTIVE);
 		String pass2 = request.getParameter("password2");
 		try {
-			if (dto.getPassword().equals(pass2)) {
+			if (dto.getPassword().equals(pass2) && comprobarDto(dto)) {
 				UserDao dao = PersistenceFactory.newUserDao();
 				dao.save(dto);
 				Log.debug("Creado el usuario [%s]",
@@ -38,6 +36,10 @@ public class CrearUsuarioAccion implements Accion {
 					dto.getLogin());
 		}
 		return "EXITO";
+	}
+
+	private boolean comprobarDto(User dto) {
+		return dto.getEmail().isEmpty() ?  false : dto.getLogin().isEmpty() ?  false : dto.getName().isEmpty() ?  false : dto.getSurname().isEmpty() ? false : true;
 	}
 
 }
