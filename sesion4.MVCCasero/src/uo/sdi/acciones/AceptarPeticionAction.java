@@ -51,6 +51,7 @@ public class AceptarPeticionAction implements Accion {
 			daoViaje.update(v);
 		}
 		
+		@SuppressWarnings("unchecked")
 		List<ListaApuntados> lista = (List<ListaApuntados>) request.getSession().getAttribute("listaApuntadoPromotor");
 		for(ListaApuntados t : lista){
 			if(t.getUsuario().getId().equals(u.getId()) && t.getViaje().getId().equals(v.getId())){
@@ -59,12 +60,14 @@ public class AceptarPeticionAction implements Accion {
 				t.setRelacionViaje();
 			}
 		}
+		@SuppressWarnings("unchecked")
 		List<Trip> l = (List<Trip>) request.getServletContext().getAttribute("listaViajes");
 		for(Trip t : l){
 			if(t.getId().equals(v.getId())){
 				t.setAvailablePax(v.getAvailablePax());
 			}
 		}
+		@SuppressWarnings("unchecked")
 		List<Trip> l2 = (List<Trip>) request.getSession().getAttribute("listaPromotor");
 		for(Trip t : l2){
 			if(t.getId().equals(v.getId()))

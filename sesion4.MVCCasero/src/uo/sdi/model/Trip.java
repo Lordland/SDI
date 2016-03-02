@@ -1,7 +1,6 @@
 package uo.sdi.model;
 
 import java.util.Date;
-import java.sql.Timestamp;
 /**
  * This class is not an entity, it is a DTO with the same fields as 
  * a row in the table

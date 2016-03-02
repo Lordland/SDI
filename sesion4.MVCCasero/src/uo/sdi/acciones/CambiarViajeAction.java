@@ -12,6 +12,7 @@ import uo.sdi.persistence.TripDao;
 
 public class CambiarViajeAction implements Accion {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {

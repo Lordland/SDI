@@ -1,7 +1,6 @@
 package uo.sdi.acciones;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,18 +9,15 @@ import alb.util.log.Log;
 import uo.sdi.acciones.Accion;
 import uo.sdi.model.Application;
 import uo.sdi.model.ListaApuntados;
-import uo.sdi.model.ListaApuntados.PeticionEstado;
-import uo.sdi.model.Seat;
-import uo.sdi.model.SeatStatus;
 import uo.sdi.model.Trip;
 import uo.sdi.model.User;
 import uo.sdi.persistence.ApplicationDao;
 import uo.sdi.persistence.PersistenceFactory;
-import uo.sdi.persistence.SeatDao;
 import uo.sdi.persistence.TripDao;
 
 public class ApuntarseViajeAction implements Accion {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {

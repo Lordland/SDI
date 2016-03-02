@@ -6,18 +6,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import uo.sdi.model.ListaApuntados;
-import uo.sdi.model.Seat;
-import uo.sdi.model.SeatStatus;
 import uo.sdi.model.Trip;
 import uo.sdi.model.User;
 import uo.sdi.persistence.ApplicationDao;
 import uo.sdi.persistence.PersistenceFactory;
-import uo.sdi.persistence.SeatDao;
 import uo.sdi.persistence.TripDao;
 import alb.util.log.Log;
 
 public class DesapuntarseViajeAction implements Accion{
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {

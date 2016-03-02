@@ -10,15 +10,14 @@ import uo.sdi.model.ListaApuntados.PeticionEstado;
 import uo.sdi.model.Seat;
 import uo.sdi.model.SeatStatus;
 import uo.sdi.model.Trip;
-import uo.sdi.model.TripStatus;
 import uo.sdi.model.User;
 import uo.sdi.persistence.PersistenceFactory;
-import uo.sdi.persistence.SeatDao;
 import uo.sdi.persistence.TripDao;
 import uo.sdi.persistence.UserDao;
 
 public class CancelarPeticionAction implements Accion {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {
