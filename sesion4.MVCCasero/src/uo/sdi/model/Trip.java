@@ -79,18 +79,7 @@ public class Trip {
 		return closingDate;
 	}
 	
-	public Timestamp getArrivalDateT() {
-		return new Timestamp(arrivalDate.getTime());
-	}
-
-	public Timestamp getDepartureDateT() {
-		return new Timestamp(departureDate.getTime());
-	}
-
-
-	public Timestamp getClosingDateT() {
-		return new Timestamp(closingDate.getTime());
-	}
+	
 
 	public void setClosingDate(Date closingDate) {
 		this.closingDate = closingDate;
